@@ -1,9 +1,12 @@
+import time
 import tkinter
+import tkinter.filedialog
 import tkinter.messagebox
 import tkinter.ttk
-import tkinter.filedialog
+import os
+from PIL import Image, ImageTk, ImageGrab, ImageFilter
+
 import common
-import time
 
 
 def showpl():
@@ -13,7 +16,15 @@ def showpl():
         tkinter.messagebox.showerror('错误', '输入的不是数字')
         et.delete(0)
         return
-    common.showinweb(page)
+    # common.showinweb(page)
+    common.download(page, os.path.abspath('.'))
+    showwindows = tkinter.Toplevel()
+    img_open = Image.open(str(page) + '.jpg')
+    img_open = img_open.resize((640, 360), Image.ANTIALIAS)
+    img_jpg = ImageTk.PhotoImage(img_open)
+    tkinter.Label(showwindows, image=img_jpg, height=360, width=640).pack()
+    showwindows.mainloop()
+    os.remove(os.path.abspath('.') + '\\' + str(page) + '.jpg')
 
 
 def changemode(x):

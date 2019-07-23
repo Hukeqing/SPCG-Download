@@ -3,3 +3,5 @@ dist
 build
 .idea
 __pycache__
+test.py
+[0-9]+.jpg

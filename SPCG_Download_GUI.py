@@ -22,16 +22,27 @@ def showpl():
         tkinter.messagebox.showerror('错误', '输入的数字超出范围')
         et.delete(0, len(et.get()))
         return
-    with tempfile.TemporaryDirectory() as tmpdir:
-        common.download(page, os.path.join(os.path.abspath('.'), tmpdir))
-        showwindows = tkinter.Toplevel()
-        showwindows.title('图片编号：' + str(page))
-        img_open = Image.open(os.path.join(tmpdir, str(page) + '.jpg'))
-        img_open = img_open.resize((640, 360), Image.ANTIALIAS)
-        img_jpg = ImageTk.PhotoImage(img_open)
-        tkinter.Label(showwindows, image=img_jpg, height=360, width=640).pack()
-        showwindows.mainloop()
-
+    # with tempfile.TemporaryDirectory() as tmpdir:
+    #     common.download(page, os.path.join(os.path.abspath('.'), tmpdir))
+    #     showwindows = tkinter.Toplevel()
+    #     showwindows.title('图片编号：' + str(page))
+    #     img_open = Image.open(os.path.join(tmpdir, str(page) + '.jpg'))
+    #     img_open = img_open.resize((640, 360), Image.ANTIALIAS)
+    #     img_jpg = ImageTk.PhotoImage(img_open)
+    #     tkinter.Label(showwindows, image=img_jpg, height=360, width=640).pack()
+    #     showwindows.mainloop()
+    tmpfile = tempfile.NamedTemporaryFile(delete=False)
+    common.tempdownload(page, tmpfile)
+    tmpfile.close()
+    showwindows = tkinter.Toplevel()
+    showwindows.title('图片编号：' + str(page))
+    img_open = Image.open(tmpfile.name)
+    img_open = img_open.resize((640, 360), Image.ANTIALIAS)
+    img_jpg = ImageTk.PhotoImage(img_open)
+    tkinter.Label(showwindows, image=img_jpg, height=360, width=640).pack()
+    showwindows.mainloop()
+    # print(tmpfile.name)
+    os.remove(tmpfile.name)
 
 def changemode(x):
     downloadmain.pack_forget()

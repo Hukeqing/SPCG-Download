@@ -34,6 +34,13 @@ def download(id, path):
         f.write(regets.content)
     return True
 
+def tempdownload(id, istream):
+    if not judgeid(id - 1):
+        return False
+    regets = requests.get(linker[id - 1])
+    istream.write(regets.content)
+    return True
+
 
 def showinweb(id):
     if not judgeid(id - 1):

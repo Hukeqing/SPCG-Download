@@ -5,3 +5,4 @@ build
 __pycache__
 test.py
 [0-9]+.jpg
+.vscode

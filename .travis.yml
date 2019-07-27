@@ -1,0 +1,7 @@
+language: python
+python: "3.7"
+install:
+  - pip install requests
+script: 
+  - SPCG_Download_GUI.py
+  - SPCG_Download.py

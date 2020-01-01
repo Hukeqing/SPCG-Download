@@ -4,10 +4,10 @@ block_cipher = None
 
 
 a = Analysis(['SPCG_Download_GUI.py'],
-             pathex=['D:\\Code\\python\\SPCG'],
+             pathex=['D:\\Code\\python\\GUItkinter\\venv\\Lib\\site-packages', 'D:\\Code\\python\\SPCG-Download'],
              binaries=[],
              datas=[('page.txt', '.'), ('SummerPockets.ico', '.')],
-             hiddenimports=[],
+             hiddenimports=['page.txt', 'SummerPockets.ico'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],

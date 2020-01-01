@@ -3,6 +3,6 @@ dist
 build
 .idea
 __pycache__
-test.py
+test.*
 [0-9]+.jpg
 .vscode

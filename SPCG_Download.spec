@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['SPCG_Download.py'],
-             pathex=['D:\\Code\\python\\SPCG'],
+             pathex=['D:\\Code\\python\\GUItkinter\\venv\\Lib\\site-packages'],
              binaries=[],
              datas=[('page.txt', '.')],
              hiddenimports=['page.txt'],
